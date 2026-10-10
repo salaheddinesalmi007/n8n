@@ -1,0 +1,38 @@
+{
+  "name": "n8n-nodes-writealt",
+  "version": "1.0.0",
+  "description": "n8n nodes for generating multilingual image alt text with WriteAlt.",
+  "license": "MIT",
+  "homepage": "https://writealt.com",
+  "repository": { "type": "git", "url": "https://github.com/salaheddinesalmi007/n8n.git" },
+  "bugs": { "url": "https://github.com/salaheddinesalmi007/n8n/issues" },
+  "keywords": [
+    "n8n-community-node-package",
+    "writealt",
+    "alt-text",
+    "accessibility",
+    "seo"
+  ],
+  "author": { "name": "WriteAlt", "email": "support@writealt.com" },
+  "scripts": {
+    "build": "n8n-node build",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "npm run build && node --test tests/*.test.cjs",
+    "prepublishOnly": "npm run lint && npm test"
+  },
+  "files": ["dist", "README.md", "LICENSE", "examples"],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": ["dist/credentials/WriteAltApi.credentials.js"],
+    "nodes": ["dist/nodes/WriteAlt/WriteAlt.node.js"]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.51.4",
+    "typescript": "5.9.3",
+    "n8n-workflow": "2.16.0"
+  },
+  "peerDependencies": { "n8n-workflow": "*" }
+}

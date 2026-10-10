@@ -1,0 +1,28 @@
+name: Publish
+on:
+  push:
+    tags: ['v*.*.*']
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm install --global npm@latest
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - name: Verify tag and repository metadata
+        shell: bash
+        run: |
+          node -e 'const p=require("./package.json"); if (process.env.GITHUB_REF_NAME !== `v${p.version}`) throw Error("Tag and package version differ"); if (!p.repository || !p.repository.url.includes(process.env.GITHUB_REPOSITORY)) throw Error("Set package.json repository to this public GitHub repository before publishing")'
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
