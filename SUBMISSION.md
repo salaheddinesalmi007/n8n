@@ -18,7 +18,7 @@ npm test
 npm run dev
 ```
 
-In the local n8n instance, import `examples/generate-alt-text.json`, add your credential, and execute. Confirm the output contains the submitted URL and real generated text. Test Get Account, Get Languages, and two incoming image items. Generation uses credits.
+In the local n8n instance, import `examples/local-development.json`, add your credential, and execute. Local development registers the node as `CUSTOM.writeAlt`; the separate `generate-alt-text.json` example is for the published npm package. Confirm the output contains the submitted URL and real generated text. Test Get Account, Get Languages, and two incoming image items. Generation uses credits.
 
 ## Release through GitHub Actions
 

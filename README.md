@@ -41,7 +41,7 @@ For 1,000 or more images, use Loop Over Items with a small batch size and a Wait
 
 ## Example workflow
 
-Import `examples/generate-alt-text.json`, select your WriteAlt credential, replace the image URL, and execute it. To save the results, connect Google Sheets or your CMS and map `alt_text` to the destination field.
+For an installed npm package, import `examples/generate-alt-text.json`. For local testing with `npm run dev`, import `examples/local-development.json`: n8n registers development nodes under `CUSTOM.writeAlt`. Select your WriteAlt credential, replace the image URL, and execute it. To save the results, connect Google Sheets or your CMS and map `alt_text` to the destination field.
 
 ## Errors and limits
 
